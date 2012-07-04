@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Работа в CustVox</title>
+	<link href="assets/bootstrap.css" rel="stylesheet" type="text/css">
+	<link href="assets/site.css" rel="stylesheet" type="text/css" />
+	<link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+<div class="container">
+
+	<div class="title">Users list</div>
+	<table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+		<thead>
+			<tr>
+				<th colspan="2">Name</th>
+				<th>Age</th>
+				<th>Address</th>
+				<th>Contact</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><input id="x1" name="user" value="1" type="checkbox" /></td>
+				<td><label for="x1">Oleg Kheilik</label></td>
+				<td>29</td>
+				<td>
+					Main Street 1,<br />
+					10001 New York
+				</td>
+				<td class="c5">
+					Phone: +380 66 668 32 50<br />
+					Email: <a href="mailto:olex@okhei.net">Oleg.Kheilik@custvox.com</a>
+				</td>
+			</tr>
+			<tr>
+				<td><input id="x2" name="user" value="1" type="checkbox" /></td>
+				<td><label for="x2">Alexander Stefanovich</label></td>
+				<td>30</td>
+				<td>
+					Main Street 2,<br />
+					10001 New York
+				</td>
+				<td>
+					Phone: +380 66 960 42 35<br />
+					Email: <a href="mailto:Alexander.Stefanovich@custvox.com">Alexander.Stefanovich@custvox.com</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<div class="buttons">
+		<a href="#" class="btn btn-success btn-small">
+			<i class="icon-user icon-white"></i>
+			Create new
+		</a>
+		<a href="#" class="btn btn-primary btn-small">
+			<i class="icon-check icon-white"></i>
+			Select all
+		</a>
+		<a href="#" class="btn btn-danger btn-small">
+			<i class="icon-trash icon-white"></i>
+			Delete
+		</a>
+	</div>
+
+	<div class="title">Create new user</div>
+	
+	<form class="form-horizontal well">
+		<div class="row">
+			<div class="span4">
+				<div class="control-group">
+					<label class="control-label" for="first">First name:</label>
+					<div class="controls">
+						<input class="input-xlarge span2" id="first" tabindex="1" type="text">
+					</div>
+				</div>
+			</div>
+			<div class="span4">
+				<div class="control-group">
+					<label class="control-label" for="street">Street:</label>
+					<div class="controls">
+						<input class="input-xlarge span2" id="street" tabindex="4" type="text">
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="span4">
+				<div class="control-group">
+					<label class="control-label" for="last">Last name:</label>
+					<div class="controls">
+						<input class="input-xlarge span2" id="last" tabindex="2" type="text">
+					</div>
+				</div>
+			</div>
+			<div class="span4">
+				<div class="control-group">
+					<label class="control-label" for="first">ZIP code:</label>
+					<div class="controls">
+						<input class="input-xlarge span2" id="zip" tabindex="5" type="text">
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="span4">
+				<div class="control-group">
+					<label class="control-label" for="birth">Age:</label>
+					<div class="controls">
+						<select tabindex="3" class="span2" id="birth">
+							<option>Please select</option>
+							<option>20</option>
+							<option>21</option>
+							<option>22</option>
+							<option>23</option>
+							<option>24</option>
+							<option>25</option>
+							<option>26</option>
+							<option>27</option>
+							<option>28</option>
+							<option>29</option>
+							<option>30</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="span4">
+				<div class="control-group">
+					<label class="control-label" for="last">City:</label>
+					<div class="controls">
+						<input class="input-xlarge span2" id="city" tabindex="6" type="text">
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="span4">
+				<div class="control-group">
+					<label class="control-label" for="phone">Phone:</label>
+					<div class="controls">
+						<input class="input-xlarge span2" id="last" tabindex="7" type="text">
+					</div>
+				</div>
+			</div>
+			<div class="span4">
+				<div class="control-group">
+					<label class="control-label" for="first">Email:</label>
+					<div class="controls">
+						<input class="input-xlarge span2" id="email" tabindex="8" type="text">
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="create">
+			<a href="#" class="btn btn-success btn-small">
+				<i class="icon-ok icon-white"></i>
+				Create new user
+			</a>
+			<a href="#" class="btn btn-small">
+				<i class="icon-remove"></i>
+				Cancel
+			</a>
+		</div>
+	</form>
+
+	<div class="title">Confirmation dialog</div>
+	
+	<div class="row">
+		<div class="alert span5">
+			<div class="center">
+				Are you sure you want to delete Oleg Kheilik?
+			</div>
+			<div class="center m10px">
+				<a href="#" class="btn btn-success btn-small">
+					<i class="icon-ok icon-white"></i>
+					Yes
+				</a>
+				<a href="#" class="btn btn-small">
+					<i class="icon-remove"></i>
+					No
+				</a>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+<script src="js/jquery.js"></script>
+<script src="js/jquery.championBox.js"></script>
+<script src="js/main.js"></script>
+</body></html>
