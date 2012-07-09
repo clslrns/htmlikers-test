@@ -1,0 +1,4 @@
+.champion-grid tr.selected{
+    background:#111185;
+    color:#fff;
+}
