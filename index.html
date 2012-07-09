@@ -5,14 +5,15 @@
 	<title>Работа в CustVox</title>
 	<link href="assets/bootstrap.css" rel="stylesheet" type="text/css">
 	<link href="assets/site.css" rel="stylesheet" type="text/css" />
-	<link href="style.css" rel="stylesheet" type="text/css" />
+	<link href="cb-style.css" rel="stylesheet" type="text/css" />
+	<link href="cg-style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
 <div class="container">
 
 	<div class="title">Users list</div>
-	<table border="0" cellpadding="0" cellspacing="0" class="table table-bordered">
+	<table border="0" cellpadding="0" cellspacing="0" class="table table-bordered champion-grid">
 		<thead>
 			<tr>
 				<th colspan="2">Name</th>
@@ -56,7 +57,7 @@
 			<i class="icon-user icon-white"></i>
 			Create new
 		</a>
-		<a href="#" class="btn btn-primary btn-small">
+		<a href="#" class="btn btn-primary btn-small cg-select-all">
 			<i class="icon-check icon-white"></i>
 			Select all
 		</a>
@@ -68,7 +69,7 @@
 
 	<div class="title">Create new user</div>
 	
-	<form class="form-horizontal well">
+	<form class="form-horizontal well champion-form">
 		<div class="row">
 			<div class="span4">
 				<div class="control-group">
@@ -172,7 +173,7 @@
 
 	<div class="title">Confirmation dialog</div>
 	
-	<div class="row">
+	<div class="row champion-confirm">
 		<div class="alert span5">
 			<div class="center">
 				Are you sure you want to delete Oleg Kheilik?
@@ -195,5 +196,6 @@
 
 <script src="js/jquery.js"></script>
 <script src="js/jquery.championBox.js"></script>
+<script src="js/jquery.championGrid.js"></script>
 <script src="js/main.js"></script>
 </body></html>

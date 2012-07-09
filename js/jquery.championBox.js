@@ -11,11 +11,39 @@
     CustomCheckbox.prototype = {
         init : function()
         {
+            var that = this;
             this.element
                 .hide()
                 .wrap('<span class="' + this.options.customClass + '" />');
             
             this.element.parent().click( this.toggle );
+            
+            
+            
+            $('label[for=' + this.element.attr( 'id' ) + ']')
+                .click( function( event ){
+                    
+                    event.preventDefault();
+                    
+                    var el = $(this).find( '.' + that.options.customClass );
+                    if( el.length )
+                    {
+                        that.toggle.apply(
+                            el.find('.' + that.options.customClass),
+                            arguments
+                        );
+                    }
+                    else
+                    {
+                        el = $( '#' + $(this).attr('for') );
+                        if( el.length )
+                        {
+                            that.toggle.apply(
+                                el.parent(), arguments
+                            );
+                        }
+                    }
+                });
         },
         toggle : function()
         {
