@@ -17,9 +17,7 @@
                 .wrap('<span class="' + this.options.customClass + '" />');
             
             this.element.parent().click( this.toggle );
-            
-            
-            
+
             $('label[for=' + this.element.attr( 'id' ) + ']')
                 .click( function( event ){
                     
@@ -60,13 +58,17 @@
             {
                 ob.element.removeAttr( 'checked' );
             }
+            ob.options.onCheck.call( $(this), $(this) );
         }
     }
 
     $.fn.customCheckbox = function( options )
     {
         var defaults = {
-            customClass : 'champion-box'
+            customClass : 'champion-box',
+            // This function will be called after checkbox toggle
+            // Have custom span in first argument and 
+            onCheck : function(){}
         };
         
         $.extend( defaults, options );

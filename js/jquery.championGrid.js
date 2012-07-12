@@ -9,26 +9,40 @@
     
     ChampionGrid.prototype = {
         init : function()
+        {},
+        
+        // Select all rows in <tbody>, which mathes rowsSelector
+        _select : function( rowsSelector )
         {
+            rowsSelector = rowsSelector || '';
+            var row = this.element.find('tbody tr' + rowsSelector);
+            
+            row.toggleClass('selected');
         },
+        
+        selectOneToggle : function( rowNum )
+        {
+            this._select( ':eq(' + rowNum + ')' );
+        },
+        
         selectAllToggle : function()
         {
-            var tableRows = this.element.find('tbody tr');
-
-            if( tableRows.filter('.selected').length )
+            var tableRows = this.element.find('tbody tr'),
+                selectedRows = tableRows.filter('.selected');
+            
+            if( selectedRows.length )
             {
-                tableRows
-                    .removeClass('selected')
-                        .find('input[type=checkbox]')
-                        .click();
+                this.element.find('.selected [type=checkbox]').click();
             }
             else
             {
-                tableRows
-                    .addClass('selected')
-                        .find('input[type=checkbox]')
-                        .click();
+                this.element.find('[type=checkbox]').click();
             }
+        },
+        
+        removeSelectedRows : function()
+        {
+            this.element.find('tr.selected').remove();
         }
     }
 
