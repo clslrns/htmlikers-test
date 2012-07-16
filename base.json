@@ -1,3 +1,223 @@
-460$
-900$
-700$
+[
+{
+	"firstName": "Alexander",
+	"lastName": "Kheilik",
+	"age": 52,
+	"address":{
+		"streetAddress": "Main Street",
+		"city": "New York",
+		"state": "NY",
+		"postalCode": "10001"
+	},
+	"contact":
+	[
+		{
+			"type": "phone",
+			"data": "+380930245423"
+		},
+		{
+			"type": "email",
+			"data": "Alexander.Kheilik@custvox.com"
+		}
+	]
+},
+{
+	"firstName": "Alexander",
+	"lastName": "Stefanovich",
+	"age": 30,
+	"address":{
+		"streetAddress": "Stachek",
+		"city": "St.Petersburg",
+		"state": "NY",
+		"postalCode": "12999"
+	},
+	"contact":
+	[
+		{
+			"type": "phone",
+			"data": "+78121234567"
+		},
+		{
+			"type": "email",
+			"data": "stefan@custvox.com"
+		}
+	]
+},
+{
+	"firstName": "Larisa",
+	"lastName": "Zhmak",
+	"age": 24,
+	"address":{
+		"streetAddress": "Vulitsa",
+		"city": "Kherson",
+		"state": "NY",
+		"postalCode": "05643"
+	},
+	"contact":
+	[
+		{
+			"type": "phone",
+			"data": "+380930245423"
+		},
+		{
+			"type": "email",
+			"data": "larisa@custvox.com"
+		}
+	]
+},
+{
+	"firstName": "Oleg",
+	"lastName": "Kheilik",
+	"age": 24,
+	"address":{
+		"streetAddress": "via Vanoni",
+		"city": "Lugano",
+		"state": "NY",
+		"postalCode": "12345"
+	},
+	"contact":
+	[
+		{
+			"type": "phone",
+			"data": "+380930245444"
+		},
+		{
+			"type": "email",
+			"data": "olex@custvox.com"
+		}
+	]
+},
+{
+	"firstName": "Stanislav",
+	"lastName": "Lipchansky",
+	"age": 50,
+	"address":{
+		"streetAddress": "Universitetskaya ul.",
+		"city": "Donetsk",
+		"state": "NY",
+		"postalCode": "12345"
+	},
+	"contact":
+	[
+		{
+			"type": "phone",
+			"data": "+380930245111"
+		},
+		{
+			"type": "email",
+			"data": "stas@custvox.com"
+		}
+	]
+},
+{
+	"firstName": "Sergey",
+	"lastName": "Karamushkin",
+	"age": 25,
+	"address":{
+		"streetAddress": "Tverskaya ul.",
+		"city": "Moscow",
+		"state": "NY",
+		"postalCode": "55555"
+	},
+	"contact":
+	[
+		{
+			"type": "phone",
+			"data": "+74956784536"
+		},
+		{
+			"type": "email",
+			"data": "serg@custvox.com"
+		}
+	]
+},
+{
+	"firstName": "Alena",
+	"lastName": "Serpetskay",
+	"age": 25,
+	"address":{
+		"streetAddress": "Lenina ul.",
+		"city": "Zaporozhye",
+		"state": "NY",
+		"postalCode": "33333"
+	},
+	"contact":
+	[
+		{
+			"type": "phone",
+			"data": "+380556743747"
+		},
+		{
+			"type": "email",
+			"data": "alena@custvox.com"
+		}
+	]
+},
+{
+	"firstName": "Federico",
+	"lastName": "Cesconi",
+	"age": 45,
+	"address":{
+		"streetAddress": "Ubanhof",
+		"city": "Zurich",
+		"state": "NY",
+		"postalCode": "333333"
+	},
+	"contact":
+	[
+		{
+			"type": "phone",
+			"data": "+41664567474"
+		},
+		{
+			"type": "email",
+			"data": "fedec@custvox.com"
+		}
+	]
+},
+{
+	"firstName": "Jukka",
+	"lastName": "Henkaho",
+	"age": 40,
+	"address":{
+		"streetAddress": "Aleksandrinkatu",
+		"city": "Helskinki",
+		"state": "NY",
+		"postalCode": "34343"
+	},
+	"contact":
+	[
+		{
+			"type": "phone",
+			"data": "+38554563958"
+		},
+		{
+			"type": "email",
+			"data": "juk@custvox.com"
+		}
+	]
+}
+,
+{
+	"firstName": "Mariella",
+	"lastName": "Borghi",
+	"age": 40,
+	"address":{
+		"streetAddress": "via Garibaldi",
+		"city": "Milan",
+		"state": "NY",
+		"postalCode": "333343"
+	},
+	"contact":
+	[
+		{
+			"type": "phone",
+			"data": "+37554563958"
+		},
+		{
+			"type": "email",
+			"data": "borg@custvox.com"
+		}
+	]
+}
+]
