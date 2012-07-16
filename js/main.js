@@ -1,11 +1,11 @@
-$(document).ready( function(){
+function actualizeSelectAllButtonState()
+{
+    var text = $('table').find('tr.selected').length ?
+        'Deselect all' : 'Select all';
+    $('.cg-select-all .btn-caption').text( text );
+}
 
-    function actualizeSelectAllButtonState()
-    {
-        var text = $('table').find('tr.selected').length ?
-            'Deselect all' : 'Select all';
-        $('.cg-select-all .btn-caption').text( text );
-    }
+$(document).ready( function(){
 
     $('input[type=checkbox]').customCheckbox({
         onCheck : function(){
@@ -29,7 +29,23 @@ $(document).ready( function(){
                 .data('myChampionGrid').selectAllToggle();
         }
     );
+    
     $('.cg-remove-selected').click(
+        function( event ){
+            event.preventDefault();
+            $('.champion-grid')
+                .data('myChampionGrid').removeSelectedRowsConfirm();
+        }
+    );
+    
+    $('.delete-confirm-dialog .cancel-delete').click(
+        function( event ){
+            event.preventDefault();
+            $('.champion-grid')
+                .data('myChampionGrid').removeSelectedRowsConfirmHide();
+        }
+    );
+    $('.delete-confirm-dialog .delete').click(
         function( event ){
             event.preventDefault();
             $('.champion-grid')
