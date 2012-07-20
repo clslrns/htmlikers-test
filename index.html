@@ -23,37 +23,11 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td><input id="x1" name="user" value="1" type="checkbox" /></td>
-				<td><label for="x1">Oleg Kheilik</label></td>
-				<td>29</td>
-				<td>
-					Main Street 1,<br />
-					10001 New York
-				</td>
-				<td class="c5">
-					Phone: +380 66 668 32 50<br />
-					Email: <a href="mailto:olex@okhei.net">Oleg.Kheilik@custvox.com</a>
-				</td>
-			</tr>
-			<tr>
-				<td><input id="x2" name="user" value="1" type="checkbox" /></td>
-				<td><label for="x2">Alexander Stefanovich</label></td>
-				<td>30</td>
-				<td>
-					Main Street 2,<br />
-					10001 New York
-				</td>
-				<td>
-					Phone: +380 66 960 42 35<br />
-					Email: <a href="mailto:Alexander.Stefanovich@custvox.com">Alexander.Stefanovich@custvox.com</a>
-				</td>
-			</tr>
 		</tbody>
 	</table>
 	
 	<div class="buttons">
-		<a href="#" class="btn btn-success btn-small">
+		<a href="#" class="btn btn-success btn-small cg-add">
 			<i class="icon-user icon-white"></i>
 			Create new
 		</a>
@@ -70,7 +44,7 @@
     <div class="create-user-form">
     	<div class="title">Create new user</div>
     	
-    	<form class="form-horizontal well champion-form">
+    	<form name="useraddform" class="form-horizontal well champion-form">
     		<div class="row">
     			<div class="span4">
     				<div class="control-group">
@@ -161,11 +135,11 @@
     		</div>
     		
     		<div class="create">
-    			<a href="#" class="btn btn-success btn-small">
+    			<a href="#" class="btn btn-success btn-small cg-submit-form">
     				<i class="icon-ok icon-white"></i>
     				Create new user
     			</a>
-    			<a href="#" class="btn btn-small">
+    			<a href="#" class="btn btn-small cg-cancel-addition">
     				<i class="icon-remove"></i>
     				Cancel
     			</a>

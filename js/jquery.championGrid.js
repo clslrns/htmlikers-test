@@ -11,9 +11,11 @@
         init : function()
         {
             var that = this;
+            that.refreshFromFile.call( that );
+            
             var interval = setInterval( function(){
                 that.refreshFromFile.call( that )
-            }, 5000 );
+            }, 30000 );
         },
         
         // Select all rows in <tbody>, which mathes rowsSelector
@@ -25,13 +27,44 @@
             row.toggleClass('selected');
         },
         
+        _getEmailFromData : function( userData )
+        {
+            var email;
+            for( var i in userData.contact )
+            {
+                if( userData.contact[i]['type'] == 'email' )
+                {
+                    email = userData.contact[i].data;
+                }
+            }
+            return email;
+        },
+        
         addRow : function( userData )
         {
-            var $template = $(this.options.rowTemplate);
-            
-            $template.find('.d-user-name').text(
-                userData.firstName + ' ' + userData.lastName
-            );
+            var $template = $(this.options.rowTemplate),
+                email = this._getEmailFromData( userData );
+                        
+            $template
+                .find('.d-user-name').text(
+                    userData.firstName + ' ' + userData.lastName
+                ).end()
+                .find('.d-email')
+                .text(
+                    email
+                ).attr(
+                    'href',
+                    'mailto:' + email
+                )
+                .end()
+                .find('label').attr(
+                    'for',
+                    'user-' + ( $('table tbody tr').length + 1 )
+                ).end()
+                .find('[type=checkbox]').attr(
+                    'id',
+                    'user-' + ( $('table tbody tr').length + 1 )
+                );
                         
             $template.find('input[type=checkbox]').customCheckbox({
                 onCheck : function(){
@@ -47,6 +80,23 @@
             });
             
             this.element.append( $template );
+        },
+        
+        editRow : function( userData )
+        {
+            var email = this._getEmailFromData( userData );
+            
+            if( email )
+            {
+                $('table tbody tr').each( function(){
+                    if( $(this).find('.d-email').text() == email )
+                    {
+                        $(this)
+                            .find('.d-user-name')
+                            .text( userData.firstName + ' ' + userData.lastName );
+                    }
+                });
+            }
         },
         
         selectOneToggle : function( rowNum )
@@ -71,18 +121,50 @@
         
         refreshFromFile : function()
         {
-            var that = this;
+            var that = this,
+                d = new Date();
             $.ajax({
-                url : '/htmlikers-test/base.json?2',
+                url : '/htmlikers-test/base.json?' + d.valueOf(),
                 dataType : 'text',
                 context : that
             }).done( function( data ){
-                var users = $.parseJSON( data );
+                var users = $.parseJSON( data ),
+                    userEmails = [];
                 
-                for( i in users )
+                for( var i in users )
                 {
-                    this.addRow( users[i] );
+                    var email = this._getEmailFromData( users[i] );
+                    
+                    userEmails.push( email );
+                    
+                    if( $(".d-email[href='mailto:" + email + "']").length )
+                    {
+                        that.editRow( users[i] );
+                    }
+                    else
+                    {
+                        that.addRow( users[i] );
+                    }
                 }
+                
+                $('table tbody tr').each( function(){
+                    var exists = false,
+                        rowEmail = $(this).find('.d-email').text();
+                        
+                    for( var i in userEmails )
+                    {
+                        if( rowEmail == userEmails[i] )
+                        {
+                            console.log( 'exists' );
+                            exists = true;
+                        }
+                    }
+                    
+                    if( !exists )
+                    {
+                        $(this).remove();
+                    }
+                });
             });
         },
 

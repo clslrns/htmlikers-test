@@ -52,4 +52,33 @@ $(document).ready( function(){
                 .data('myChampionGrid').removeSelectedRows();
         }
     );
+    
+    $('.cg-add').click( function( event ){
+        event.preventDefault();
+        $('.create-user-form').show();
+    });
+    
+    $('.cg-cancel-addition').click( function( event ){
+        event.preventDefault();
+        $('.create-user-form').hide();
+    });
+    
+    $('.cg-submit-form').click( function( event ){
+        var userData = {};
+        event.preventDefault();
+        
+        userData.lastName = $('#last').val();
+        userData.firstName = $('#first').val();
+        userData.contact = [
+            {
+                'type' : 'email',
+                'data' : $('#email').val()
+            }
+        ];
+        
+        $('table').data('myChampionGrid').addRow( userData );
+        $('.create-user-form').hide();
+        document.forms.useraddform.reset();
+    });
+    
 });
