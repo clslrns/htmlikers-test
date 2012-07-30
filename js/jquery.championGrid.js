@@ -25,14 +25,15 @@
             var row = this.element.find('tbody tr' + rowsSelector);
             
             row.toggleClass('selected');
+            this.options.onRowSelectToggle.call( this );
         },
         
-        _getEmailFromData : function( userData )
+        _getContactsField : function( userData, fieldName )
         {
             var email;
             for( var i in userData.contact )
             {
-                if( userData.contact[i]['type'] == 'email' )
+                if( userData.contact[i]['type'] == fieldName )
                 {
                     email = userData.contact[i].data;
                 }
@@ -43,28 +44,21 @@
         addRow : function( userData )
         {
             var $template = $(this.options.rowTemplate),
-                email = this._getEmailFromData( userData );
+                email = this._getContactsField( userData, 'email' ),
+                phone = this._getContactsField( userData, 'phone' );
                         
             $template
-                .find('.d-user-name').text(
-                    userData.firstName + ' ' + userData.lastName
+                .find('.d-user-name').text( userData.firstName + ' ' + userData.lastName ).end()
+                .find('.d-email').text( email ).attr( 'href', 'mailto:' + email ).end()
+                .find('.d-phone').text( phone ).end()
+                .find('.d-address').html(
+                    userData.address.city + ', ' +
+                    userData.address.streetAddress + '<br>' + 
+                    'ZIP: ' + userData.address.postalCode 
                 ).end()
-                .find('.d-email')
-                .text(
-                    email
-                ).attr(
-                    'href',
-                    'mailto:' + email
-                )
-                .end()
-                .find('label').attr(
-                    'for',
-                    'user-' + ( $('table tbody tr').length + 1 )
-                ).end()
-                .find('[type=checkbox]').attr(
-                    'id',
-                    'user-' + ( $('table tbody tr').length + 1 )
-                );
+                .find('.d-age').text( userData.age ).end()
+                .find('label').attr( 'for', 'user-' + ( $('table tbody tr').length + 1 ) ).end()
+                .find('[type=checkbox]').attr( 'id', 'user-' + ( $('table tbody tr').length + 1 ));
                         
             $template.find('input[type=checkbox]').customCheckbox({
                 onCheck : function(){
@@ -74,8 +68,6 @@
                         .parents('table')
                         .data('myChampionGrid')
                         .selectOneToggle( parentRowNum );
-                        
-                    actualizeSelectAllButtonState();
                 }
             });
             
@@ -84,7 +76,7 @@
         
         editRow : function( userData )
         {
-            var email = this._getEmailFromData( userData );
+            var email = this._getContactsField( userData, 'email' );
             
             if( email )
             {
@@ -133,7 +125,7 @@
                 
                 for( var i in users )
                 {
-                    var email = this._getEmailFromData( users[i] );
+                    var email = this._getContactsField( users[i], 'email' );
                     
                     userEmails.push( email );
                     
@@ -155,7 +147,6 @@
                     {
                         if( rowEmail == userEmails[i] )
                         {
-                            console.log( 'exists' );
                             exists = true;
                         }
                     }
@@ -167,7 +158,6 @@
                 });
             });
         },
-
         
         removeSelectedRowsConfirm : function()
         {
@@ -200,7 +190,8 @@
 				    + 'Phone: <span class="d-phone"></span><br />'
 				 	+  'Email: <a class="d-email"></a>'
 				+ '</td>'
-			+ '</tr>'
+			+ '</tr>',
+			onRowSelectToggle : function(){}
         };
         
         $.extend( defaults, options );

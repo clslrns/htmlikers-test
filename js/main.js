@@ -1,11 +1,11 @@
-function actualizeSelectAllButtonState()
-{
-    var text = $('table').find('tr.selected').length ?
-        'Deselect all' : 'Select all';
-    $('.cg-select-all .btn-caption').text( text );
-}
-
 $(document).ready( function(){
+
+    function actualizeSelectAllButtonState()
+    {
+        var text = $('table').find('tr.selected').length ?
+            'Deselect all' : 'Select all';
+        $('.cg-select-all .btn-caption').text( text );
+    }
 
     $('input[type=checkbox]').customCheckbox({
         onCheck : function(){
@@ -20,7 +20,9 @@ $(document).ready( function(){
         }
     });
 
-    $('.champion-grid').championGrid();
+    $('.champion-grid').championGrid({
+        onRowSelectToggle : actualizeSelectAllButtonState
+    });
         
     $('.cg-select-all').click(
         function( event ){
@@ -57,28 +59,59 @@ $(document).ready( function(){
         event.preventDefault();
         $('.create-user-form').show();
     });
-    
+
     $('.cg-cancel-addition').click( function( event ){
         event.preventDefault();
         $('.create-user-form').hide();
     });
     
     $('.cg-submit-form').click( function( event ){
-        var userData = {};
-        event.preventDefault();
+    
+        if( $('.champion-form').valid() )
+        {
+            var userData = {};
+            event.preventDefault();
+            
+            userData.lastName = $('#last').val();
+            userData.firstName = $('#first').val();
+            userData.age = $('#age').val();
+            userData.contact = [
+                {
+                    'type' : 'email',
+                    'data' : $('#email').val()
+                },
+                {
+                    'type' : 'phone',
+                    'data' : $('#phone').val()
+                }
+            ];
+            userData.address = {
+                streetAddress : $('#street').val(),
+                city : $('#city').val(),
+                postalCode : $('#zip').val()
+            };
+            
+            $('table').data('myChampionGrid').addRow( userData );
+            $('.create-user-form').hide();
+            document.forms.useraddform.reset();
+        }
+    });
+    
+    var rules = {},
+        messages = {};
         
-        userData.lastName = $('#last').val();
-        userData.firstName = $('#first').val();
-        userData.contact = [
-            {
-                'type' : 'email',
-                'data' : $('#email').val()
-            }
-        ];
-        
-        $('table').data('myChampionGrid').addRow( userData );
-        $('.create-user-form').hide();
-        document.forms.useraddform.reset();
+    $('.champion-form input[type=text], .champion-form select').each( function(){
+        rules[$(this).attr('name')] = {
+            'required' : true
+        };
+        messages[$(this).attr('name')] = '';
+    });
+    
+    rules.email.email = true;
+    
+    $('.champion-form').validate({
+        rules : rules,
+        messages : messages
     });
     
 });

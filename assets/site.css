@@ -77,3 +77,11 @@ div.center{
 div.m10px{
 	margin-top: 10px;
 }
+input.error,
+select.error{
+    border-color:red;
+}
+
+label[generated]{
+    display:none !important;
+}
